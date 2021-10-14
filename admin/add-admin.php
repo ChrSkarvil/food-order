@@ -65,17 +65,37 @@
         $username = $_POST['username'];
         $password = md5($_POST['password']); //Password encryption with md5
 
-        //2. SQL Query to  save the data into database
-        $sql = "INSERT INTO tbl_admin SET 
+        $sql2 = "SELECT * FROM tbl_admin WHERE (username='$username');";
+
+        $res2=mysqli_query($conn, $sql2);
+
+        if(mysqli_num_rows($res2) > 0) {
+
+            $row = mysqli_fetch_assoc($res2);
+            if($username==isset($row['username']))
+            {
+                $_SESSION['add'] = '<div class="error">Username already exsists</div>';
+                header("location:".SITEURL.'admin/add-admin.php');
+                $exist = true;
+            }  
+        }
+        else
+        {
+            //2. SQL Query to  save the data into database
+            $sql = "INSERT INTO tbl_admin SET 
             full_name='$full_name',
             username='$username',
             password='$password'
-        ";
+            ";
+
+            //3. Executing Query and saving data into database
+            $res = mysqli_query($conn, $sql) or die(mysqli_error());        
+
+
 
         
-
-        //3. Executing Query and saving data into database
-        $res = mysqli_query($conn, $sql) or die(mysqli_error());        
+        
+        
 
         //4. Check whether the (Query is executed) data is inserted or not and display appropiate message
         if($res==TRUE)
@@ -87,7 +107,7 @@
             //Redirect page to manage admin
             header("location:".SITEURL.'admin/manage-admin.php');
         }
-        else
+        else if($res!=true && $exist==false)
         {
             //Failed to insert data
             //echo "Failed To Insert Data";
@@ -96,6 +116,7 @@
             //Redirect page to manage admin
             header("location:".SITEURL.'admin/add-admin.php');
         }
+    }
 
     }
     
