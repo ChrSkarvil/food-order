@@ -55,6 +55,8 @@ table tr td{
     padding: 1%;
     text-decoration: none;
     font-weight: bold;
+    display: inline-block;
+    text-align: center;
 }
 
 .btn-secondary:hover{
