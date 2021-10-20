@@ -116,11 +116,11 @@
             if(isset($_POST['submit']))
             {
                 //1. Get all the values from our form
-                $id = $_POST['id'];
-                $title = $_POST['title'];
-                $current_image = $_POST['current_image'];
-                $featured = $_POST['featured'];
-                $active = $_POST['active'];
+                $id = mysqli_real_escape_string($conn, $_POST['id']);
+                $title = mysqli_real_escape_string($conn, $_POST['title']);
+                $current_image = mysqli_real_escape_string($conn, $_POST['current_image']);
+                $featured = mysqli_real_escape_string($conn, $_POST['featured']);
+                $active = mysqli_real_escape_string($conn, $_POST['active']);
                 
                 //2. Updating new image if selected
                 //Check whether the image is selected or not

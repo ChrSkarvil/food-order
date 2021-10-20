@@ -92,9 +92,9 @@
     {
         // echo "Button Clicked";
         //Get all the values from form to update
-        $id = $_POST['id'];
-        $full_name = $_POST['full_name'];
-        $username = $_POST['username'];
+        $id = mysqli_real_escape_string($conn, $_POST['id']);
+        $full_name = mysqli_real_escape_string($conn, $_POST['full_name']);
+        $username = mysqli_real_escape_string($conn, $_POST['username']);
 
         $sql2 = "SELECT * FROM tbl_admin WHERE (username='$username');";
 

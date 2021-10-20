@@ -163,15 +163,15 @@
             if(isset($_POST['submit']))
             {
                 //1. Get all the details from the form
-                $id = $_POST['id'];
-                $title = $_POST['title'];
-                $description = $_POST['description'];
-                $price = $_POST['price'];
-                $current_image = $_POST['current_image'];
-                $category = $_POST['category'];
+                $id = mysqli_real_escape_string($conn, $_POST['id']);
+                $title = mysqli_real_escape_string($conn, $_POST['title']);
+                $description = mysqli_real_escape_string($conn, $_POST['description']);
+                $price = mysqli_real_escape_string($conn, $_POST['price']);
+                $current_image = mysqli_real_escape_string($conn, $_POST['current_image']);
+                $category = mysqli_real_escape_string($conn, $_POST['category']);
 
-                $featured = $_POST['featured'];
-                $active = $_POST['active'];
+                $featured = mysqli_real_escape_string($conn, $_POST['featured']);
+                $active = mysqli_real_escape_string($conn, $_POST['active']);
 
                 //2. Upload the image if selected
 

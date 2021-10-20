@@ -75,13 +75,13 @@
             if(isset($_POST['submit']))
             {
                 //1. Get the value from the category form
-                $title = $_POST['title'];
+                $title = mysqli_real_escape_string($conn, $_POST['title']);
 
                 //For radio input, we need to check whether the button is selected or not
                 if(isset($_POST['featured']))
                 {
                     //Get the value from form
-                    $featured = $_POST['featured'];
+                    $featured = mysqli_real_escape_string($conn, $_POST['featured']);
                 }
                 else
                 {
@@ -91,7 +91,7 @@
 
                 if(isset($_POST['active']))
                 {
-                    $active = $_POST['active'];
+                    $active = mysqli_real_escape_string($conn, $_POST['active']);
                 }
                 else
                 {

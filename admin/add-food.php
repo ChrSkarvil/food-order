@@ -124,15 +124,15 @@
             {
                 //Add the food in database
                 //1. Get the data from form
-                $title = $_POST['title'];
-                $description = $_POST['description'];
-                $price = $_POST['price'];
-                $category = $_POST['category'];
+                $title = mysqli_real_escape_string($conn, $_POST['title']);
+                $description = mysqli_real_escape_string($conn, $_POST['description']);
+                $price = mysqli_real_escape_string($conn, $_POST['price']);
+                $category = mysqli_real_escape_string($conn, $_POST['category']);
                 
                 //Check whether radio button for featured and active are checked or not
                 if(isset($_POST['featured']))
                 {
-                    $featured = $_POST['featured'];
+                    $featured = mysqli_real_escape_string($_POST['featured']);
                 }
                 else
                 {
@@ -141,7 +141,7 @@
 
                 if(isset($_POST['active']))
                 {
-                    $active = $_POST['active'];
+                    $active = mysqli_real_escape_string($conn, $_POST['active']);
                 }
                 else
                 {

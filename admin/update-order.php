@@ -136,18 +136,18 @@
             if(isset($_POST['submit']))
             {
                 //Get all the values from form
-                $id = $_POST['id'];
-                $price = $_POST['price'];
-                $qty = $_POST['qty'];
+                $id = mysqli_real_escape_string($conn, $_POST['id']);
+                $price = mysqli_real_escape_string($conn, $_POST['price']);
+                $qty = mysqli_real_escape_string($conn, $_POST['qty']);
 
                 $total = $price * $qty;
 
-                $status = $_POST['status'];
+                $status = mysqli_real_escape_string($conn, $_POST['status']);
 
-                $customer_name = $_POST['customer_name'];
-                $customer_contact = $_POST['customer_contact'];
-                $customer_email = $_POST['customer_email'];
-                $customer_address = $_POST['customer_address'];
+                $customer_name = mysqli_real_escape_string($conn, $_POST['customer_name']);
+                $customer_contact = mysqli_real_escape_string($conn, $_POST['customer_contact']);
+                $customer_email = mysqli_real_escape_string($conn, $_POST['customer_email']);
+                $customer_address = mysqli_real_escape_string($conn, $_POST['customer_address']);
                 
                 //Update the values
                 $sql2 = "UPDATE tbl_order SET
